@@ -1,0 +1,16 @@
+import { Router } from "express";
+
+
+import { addpost, deletepost, updatepost } from "../controllers/post.controller";
+import { verifyToken } from "../middlewares/auth.middleware";
+
+export const postRouter=Router()
+
+// Post routes
+postRouter.post("/", verifyToken, addpost);
+postRouter.put("/:post_id", verifyToken, updatepost);
+postRouter.delete("/:post_id", verifyToken, deletepost);
+
+
+
+
